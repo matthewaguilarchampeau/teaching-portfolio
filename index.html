@@ -7,478 +7,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --color-bg: #FAFAF7;
-    --color-text: #2C2C2C;
-    --color-text-muted: #6B6B6B;
-    --color-accent: #8B4513;
-    --color-accent-light: #A0522D;
-    --color-border: #E0DDD5;
-    --color-card-bg: #FFFFFF;
-    --color-highlight: #F5F0E8;
-    --color-tag-bg: #EDEBE4;
-    --color-dark-section: #1E1E1E;
-    --color-dark-text: #E8E4DC;
-    --font-display: 'EB Garamond', Georgia, serif;
-    --font-body: 'DM Sans', -apple-system, sans-serif;
-    --max-width: 960px;
-    --spacing-section: 6rem;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; font-size: 16px; }
-
-  body {
-    font-family: var(--font-body);
-    color: var(--color-text);
-    background: var(--color-bg);
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* --- NAV --- */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(250, 250, 247, 0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--color-border);
-    padding: 0.9rem 2rem;
-  }
-  nav .nav-inner {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  nav .nav-name {
-    font-family: var(--font-display);
-    font-size: 1.05rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: var(--color-text);
-  }
-  nav .nav-links {
-    display: flex;
-    gap: 1.8rem;
-    list-style: none;
-  }
-  nav .nav-links a {
-    font-size: 0.82rem;
-    font-weight: 500;
-    text-decoration: none;
-    color: var(--color-text-muted);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-  nav .nav-links a:hover { color: var(--color-accent); }
-
-  /* --- HERO --- */
-  .hero {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 5rem 2rem 4rem;
-  }
-  .hero-label {
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: 1.2rem;
-  }
-  .hero h1 {
-    font-family: var(--font-display);
-    font-size: 2.8rem;
-    font-weight: 500;
-    line-height: 1.2;
-    color: var(--color-text);
-    margin-bottom: 1.5rem;
-    max-width: 720px;
-  }
-  .hero-intro {
-    font-size: 1.08rem;
-    line-height: 1.8;
-    color: var(--color-text-muted);
-    max-width: 640px;
-  }
-
-  /* --- SECTION LAYOUT --- */
-  .section {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 2rem var(--spacing-section);
-  }
-  .section-divider {
-    width: 48px;
-    height: 2px;
-    background: var(--color-accent);
-    margin-bottom: 2rem;
-  }
-  .section-label {
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: 0.5rem;
-  }
-  .section h2 {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    font-weight: 500;
-    line-height: 1.25;
-    margin-bottom: 1.5rem;
-    color: var(--color-text);
-  }
-  .section h3 {
-    font-family: var(--font-display);
-    font-size: 1.35rem;
-    font-weight: 600;
-    margin-bottom: 0.8rem;
-    color: var(--color-text);
-  }
-  .section p {
-    margin-bottom: 1.2rem;
-    max-width: 680px;
-  }
-
-  /* --- TAGS --- */
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-  }
-  .tag {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 0.3rem 0.75rem;
-    background: var(--color-tag-bg);
-    border-radius: 3px;
-    color: var(--color-text-muted);
-  }
-
-  /* --- DESIGN RATIONALE CARDS --- */
-  .rationale-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin: 2rem 0;
-  }
-  .rationale-card {
-    background: var(--color-card-bg);
-    border: 1px solid var(--color-border);
-    border-radius: 6px;
-    padding: 1.5rem;
-  }
-  .rationale-card h4 {
-    font-family: var(--font-display);
-    font-size: 1.05rem;
-    font-weight: 600;
-    margin-bottom: 0.6rem;
-    color: var(--color-accent);
-  }
-  .rationale-card p {
-    font-size: 0.92rem;
-    line-height: 1.65;
-    color: var(--color-text-muted);
-    margin-bottom: 0;
-    max-width: none;
-  }
-
-  /* --- ARTIFACT HIGHLIGHT --- */
-  .artifact-block {
-    background: var(--color-highlight);
-    border-left: 3px solid var(--color-accent);
-    padding: 1.5rem 1.8rem;
-    margin: 2rem 0;
-    border-radius: 0 6px 6px 0;
-  }
-  .artifact-block h4 {
-    font-family: var(--font-display);
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: var(--color-text);
-  }
-  .artifact-block p {
-    font-size: 0.92rem;
-    line-height: 1.65;
-    color: var(--color-text-muted);
-    max-width: none;
-    margin-bottom: 0;
-  }
-
-  /* --- FLOW DIAGRAM --- */
-  .flow-container {
-    margin: 2.5rem 0;
-    overflow-x: auto;
-  }
-  .flow {
-    display: flex;
-    align-items: center;
-    gap: 0;
-    min-width: fit-content;
-  }
-  .flow-step {
-    background: var(--color-card-bg);
-    border: 1px solid var(--color-border);
-    border-radius: 6px;
-    padding: 1rem 1.3rem;
-    min-width: 140px;
-    text-align: center;
-  }
-  .flow-step .step-label {
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: 0.3rem;
-  }
-  .flow-step .step-title {
-    font-family: var(--font-display);
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--color-text);
-  }
-  .flow-arrow {
-    color: var(--color-border);
-    font-size: 1.4rem;
-    padding: 0 0.5rem;
-    flex-shrink: 0;
-  }
-
-  /* --- WEEK STRUCTURE TABLE --- */
-  .week-structure {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 2rem 0;
-    font-size: 0.9rem;
-  }
-  .week-structure th {
-    text-align: left;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-text-muted);
-    padding: 0.8rem 1rem;
-    border-bottom: 2px solid var(--color-border);
-  }
-  .week-structure td {
-    padding: 0.8rem 1rem;
-    border-bottom: 1px solid var(--color-border);
-    vertical-align: top;
-  }
-  .week-structure td:first-child {
-    font-weight: 500;
-    white-space: nowrap;
-    color: var(--color-accent);
-  }
-
-  /* --- SCAFFOLD TIMELINE --- */
-  .scaffold-timeline {
-    position: relative;
-    padding-left: 2rem;
-    margin: 2rem 0;
-  }
-  .scaffold-timeline::before {
-    content: '';
-    position: absolute;
-    left: 6px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: var(--color-border);
-  }
-  .scaffold-item {
-    position: relative;
-    margin-bottom: 1.8rem;
-    padding-left: 1rem;
-  }
-  .scaffold-item::before {
-    content: '';
-    position: absolute;
-    left: -2rem;
-    top: 0.45rem;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: var(--color-accent);
-    border: 3px solid var(--color-bg);
-  }
-  .scaffold-item .scaffold-week {
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: 0.2rem;
-  }
-  .scaffold-item h4 {
-    font-family: var(--font-display);
-    font-size: 1.05rem;
-    font-weight: 600;
-    margin-bottom: 0.3rem;
-    color: var(--color-text);
-  }
-  .scaffold-item p {
-    font-size: 0.88rem;
-    color: var(--color-text-muted);
-    max-width: 560px;
-    margin-bottom: 0;
-  }
-
-  /* --- SLIDE ANNOTATION --- */
-  .slide-annotation {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    align-items: start;
-    margin: 2.5rem 0;
-  }
-  .slide-img-container {
-    border-radius: 6px;
-    overflow: hidden;
-    border: 1px solid var(--color-border);
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  }
-  .slide-img-container img {
-    width: 100%;
-    display: block;
-  }
-  .slide-img-placeholder {
-    width: 100%;
-    aspect-ratio: 16/9;
-    background: var(--color-dark-section);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-dark-text);
-    font-size: 0.85rem;
-    font-style: italic;
-  }
-  .slide-commentary h4 {
-    font-family: var(--font-display);
-    font-size: 1.05rem;
-    font-weight: 600;
-    margin-bottom: 0.6rem;
-    color: var(--color-text);
-  }
-  .slide-commentary p {
-    font-size: 0.9rem;
-    line-height: 1.7;
-    color: var(--color-text-muted);
-    max-width: none;
-  }
-
-  /* --- MEDIA LINKS --- */
-  .media-item {
-    display: flex;
-    gap: 1.5rem;
-    padding: 1.5rem 0;
-    border-bottom: 1px solid var(--color-border);
-    align-items: flex-start;
-  }
-  .media-item:last-child { border-bottom: none; }
-  .media-type {
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    background: var(--color-tag-bg);
-    padding: 0.3rem 0.6rem;
-    border-radius: 3px;
-    white-space: nowrap;
-    margin-top: 0.2rem;
-  }
-  .media-content h4 {
-    font-family: var(--font-display);
-    font-size: 1.05rem;
-    font-weight: 600;
-    margin-bottom: 0.3rem;
-    color: var(--color-text);
-  }
-  .media-content h4 a {
-    color: var(--color-text);
-    text-decoration: none;
-    border-bottom: 1px solid var(--color-border);
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .media-content h4 a:hover {
-    color: var(--color-accent);
-    border-color: var(--color-accent);
-  }
-  .media-content p {
-    font-size: 0.88rem;
-    color: var(--color-text-muted);
-    margin-bottom: 0;
-    max-width: none;
-  }
-
-  /* --- FOOTER --- */
-  footer {
-    border-top: 1px solid var(--color-border);
-    padding: 3rem 2rem;
-    margin-top: 2rem;
-  }
-  footer .footer-inner {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 2rem;
-  }
-  footer h3 {
-    font-family: var(--font-display);
-    font-size: 1.2rem;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-  }
-  footer p {
-    font-size: 0.88rem;
-    color: var(--color-text-muted);
-    margin-bottom: 0.3rem;
-  }
-  footer a {
-    color: var(--color-accent);
-    text-decoration: none;
-  }
-
-  /* --- RESPONSIVE --- */
-  @media (max-width: 720px) {
-    .hero h1 { font-size: 2rem; }
-    .section h2 { font-size: 1.6rem; }
-    .rationale-grid { grid-template-columns: 1fr; }
-    .slide-annotation { grid-template-columns: 1fr; }
-    nav .nav-links { gap: 1rem; }
-    nav .nav-links a { font-size: 0.75rem; }
-    footer .footer-inner { flex-direction: column; }
-    .flow { flex-wrap: wrap; justify-content: center; }
-  }
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <!-- NAVIGATION -->
 <nav>
   <div class="nav-inner">
-    <span class="nav-name">Matthew Aguilar-Champeau</span>
+    <a href="index.html" class="nav-name">Matthew Aguilar-Champeau</a>
     <ul class="nav-links">
-      <li><a href="#course-design">Course Design</a></li>
-      <li><a href="#content-scaffolding">Content Scaffolding</a></li>
-      <li><a href="#media-production">Media</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
@@ -494,15 +33,17 @@
 </header>
 
 
-
+<!-- ============================================= -->
+<!-- DESIGN APPROACH -->
+<!-- ============================================= -->
 <section class="about-section" id="approach">
   <div class="section-divider"></div>
   <div class="section-label">Design Approach</div>
-  <h2 style="font-family: var(--font-display); font-size: 2rem; font-weight: 500; line-height: 1.25; margin-bottom: 1rem; color: var(--color-text);">How I Design</h2>
-  <p style="max-width: 680px; margin-bottom: 0.5rem;">
+  <h2>How I Design</h2>
+  <p>
     My approach to instructional design comes from ten years of building courses, producing educational media, and studying how people actually learn — not in the abstract, but in specific contexts with specific constraints. Three principles run through everything I make:
   </p>
- 
+
   <div class="about-grid">
     <div class="about-card">
       <h4>Structure as Scaffolding</h4>
@@ -517,7 +58,7 @@
       <p>As a first-generation college student, I know what it's like to navigate institutions that weren't built with you in mind. That experience shapes how I design: flexible formats that accommodate different schedules and access levels, multiple low-stakes assessment types rather than high-stakes exams, and classroom norms that treat open inquiry as the default rather than the exception.</p>
     </div>
   </div>
- 
+
   <div class="tools-row">
     <span class="tool-tag">Canvas LMS</span>
     <span class="tool-tag">Backward Design</span>
@@ -529,7 +70,7 @@
     <span class="tool-tag">Articulate Rise</span>
     <span class="tool-tag">Universal Design for Learning</span>
   </div>
- 
+
   <div class="testimonial-strip">
     <div class="testimonial">
       <p>"His videos were incredibly helpful, especially for discussion. He explained things very clearly in that he went straight to the point."</p>
@@ -544,316 +85,25 @@
       <span class="testimonial-label">Student — SOC 3251W</span>
     </div>
   </div>
- 
+
   <div class="awards-inline">
     <span class="award-item"><span class="award-year">2016</span> Outstanding Teaching Assistant of the Year</span>
     <span class="award-item"><span class="award-year">2018</span> Outstanding Instructor of the Year, Runner-Up</span>
     <span class="award-item"><span class="award-year">2025</span> Center for Educational Innovation Thank-a-Teacher Award</span>
   </div>
 </section>
- 
-
-
-
 
 
 <!-- ============================================= -->
-<!-- PROJECT 1: ASYNCHRONOUS COURSE DESIGN -->
+<!-- PROJECT CARDS -->
 <!-- ============================================= -->
-<section class="section" id="course-design">
-  <div class="section-divider"></div>
-  <div class="section-label">Project 1</div>
-  <h2>Asynchronous Course Design</h2>
-  <p>
-    <strong>SOC 3211W: Race and Racism in the United States</strong><br>
-    University of Minnesota · Fall 2020 · Writing-Intensive
-  </p>
-  <div class="tags">
-    <span class="tag">Asynchronous</span>
-    <span class="tag">Canvas LMS</span>
-    <span class="tag">Backward Design</span>
-    <span class="tag">Adult Learners</span>
-    <span class="tag">Writing-Intensive</span>
-  </div>
-
-  <h3>Design Context</h3>
-  <p>
-    When the University of Minnesota shifted to remote instruction in 2020, I chose to design this course as fully asynchronous rather than replicating a synchronous classroom via Zoom. The decision was deliberate: asynchronous delivery reduced technological barriers for students with unreliable internet, accommodated varied schedules, and — more importantly — allowed me to design each week's content as a self-contained learning unit rather than a series of live meetings. The course enrolled a mix of traditional undergraduates and returning adult learners, which further supported a flexible, self-paced structure.
-  </p>
-
-  <h3>Module Architecture</h3>
-  <p>
-    The course was organized into weekly Canvas modules, each unlocking on a fixed schedule (Wednesdays at 5:30 PM) and closing when the next module opened. This created a consistent rhythm: students knew exactly when new material would appear, what was expected each week, and when deadlines fell. Every module followed the same internal pattern:
-  </p>
-
-  <div class="flow-container">
-    <div class="flow">
-      <div class="flow-step">
-        <div class="step-label">Step 1</div>
-        <div class="step-title">Assigned Readings</div>
-      </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step">
-        <div class="step-label">Step 2</div>
-        <div class="step-title">Narrated Lecture</div>
-      </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step">
-        <div class="step-label">Step 3</div>
-        <div class="step-title">Quiz or Response</div>
-      </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step">
-        <div class="step-label">Step 4</div>
-        <div class="step-title">Reflection or Paper Component</div>
-      </div>
-    </div>
-  </div>
-
-  <p>
-    Capping the workload at two graded assignments per week was a conscious design choice. Asynchronous courses carry a risk of overwhelming students who lack the pacing cues of a live classroom. A predictable, bounded workload keeps the cognitive load on the content itself rather than on navigating the course structure.
-  </p>
-
-  <div class="rationale-grid">
-    <div class="rationale-card">
-      <h4>Narrated Slide Lectures</h4>
-      <p>Rather than recording a face-to-camera lecture, I narrated over slide presentations incorporating historical images, primary source material, and media examples. This format let me control pacing, integrate visual evidence directly into the explanation, and produce content students could pause, rewind, and revisit — advantages that a synchronous lecture doesn't offer.</p>
-    </div>
-    <div class="rationale-card">
-      <h4>Reading Responses as Formative Assessment</h4>
-      <p>Weekly reading responses asked students to summarize each author's argument, evaluate the evidence, and connect readings to each other and to broader course themes. This isn't just comprehension checking — it's a structured exercise in synthesis and critical analysis, building the exact skills the final paper demands.</p>
-    </div>
-    <div class="rationale-card">
-      <h4>Timed Module Release</h4>
-      <p>Modules unlocked and locked on a weekly schedule, ensuring all students moved through the material on the same timeline. This maintained a sense of cohort progression despite the asynchronous format and prevented students from falling behind without realizing it — a common failure mode in self-paced courses.</p>
-    </div>
-    <div class="rationale-card">
-      <h4>Low-Stakes Variety</h4>
-      <p>Weekly assignments alternated between quizzes, written reflections, and paper components. Varying the format keeps engagement up and lets students demonstrate understanding in different ways, while the consistent two-per-week cap prevents assignment fatigue.</p>
-    </div>
-  </div>
-
-
-
-
-<div class="canvas-screenshot">
-  <center><img src="assets/3211W/canvas_module-04.png" alt="Canvas module view for Week 04: Studying Racial Discrimination, showing lecture pages, two graded assignments, and three assigned readings"></center><br>
-  <p class="screenshot-caption">
-    <strong>Week 04 module in Canvas.</strong> The module structure follows the consistent pattern described above: narrated lecture, followed by two graded assignments (the paper proposal and a reading response), with assigned readings listed below. The paper proposal checkpoint appears here at Week 4 — early enough to catch unfocused topics before students invest significant writing time. The reading sequence itself demonstrates content scaffolding: Barbara J. Fields's foundational argument about racial ideology is paired with a critique of race-neutral policy framing and Wilson's structural economic analysis, building the interpretive framework students need before they encounter contemporary case studies in later weeks.
-  </p>
-</div><br> 
-
-
-<div class="canvas-screenshot">
-  <center><img src="assets/3211W/canvas_quiz-04.png" alt="Canvas quiz for Week 04 sample question"></center><br>
-  <p = class="screenshot-caption">
-    <strong> Week 04 quiz question example in Canvas.</strong> The quiz question example is a straightforward question based on both the information gleaned from the reading and also reiterated in the lecture.
-  </p>
-</div>
-
-
-
-
-
-  <h3>Scaffolded Assessment: The Course Paper</h3>
-  <p>
-    The primary summative assessment — an 8–10 page research paper — was deliberately broken into staged checkpoints distributed across the semester. Each stage received instructor feedback, and students were required to submit a written explanation of how their revision addressed prior comments. This design ensures the final paper reflects iterative improvement rather than a single high-stakes attempt.
-  </p>
-
-  <div class="scaffold-timeline">
-    <div class="scaffold-item">
-      <div class="scaffold-week">Week 4</div>
-      <h4>Paper Proposal (5%)</h4>
-      <p>One-page proposal identifying research topic, question, and goals. Assessed on feasibility and connection to course themes. Functions as an early checkpoint to catch unfocused or overly ambitious projects before students invest significant time.</p>
-    </div>
-    <div class="scaffold-item">
-      <div class="scaffold-week">Week 8</div>
-      <h4>Full Draft (10%)</h4>
-      <p>Complete rough draft submitted for instructor and TA feedback. This satisfies the writing-intensive course requirement for at least one revision cycle and gives students substantive commentary on argument structure, evidence use, and writing quality while there's still time to act on it.</p>
-    </div>
-    <div class="scaffold-item">
-      <div class="scaffold-week">Week 12</div>
-      <h4>Final Paper (20%)</h4>
-      <p>Revised final submission with required reflection on how feedback was incorporated. The reflection component makes the revision process visible and intentional rather than cosmetic.</p>
-    </div>
-  </div>
-
-  <div class="artifact-block">
-    <h4>Learning Outcomes</h4>
-    <p>The course was built around two primary outcomes: (1) developing critical thinking skills — the capacity to evaluate claims, assess evidence quality, and identify faulty reasoning — and (2) developing critical writing skills — the ability to construct and support an original argument in sustained prose. Every weekly assignment and the scaffolded paper sequence were designed to advance these two outcomes in tandem.</p>
-  </div>
-</section>
-
-
-<!-- ============================================= -->
-<!-- PROJECT 2: CONTENT SCAFFOLDING / LECTURE DESIGN -->
-<!-- ============================================= -->
-<section class="section" id="content-scaffolding">
-  <div class="section-divider"></div>
-  <div class="section-label">Project 2</div>
-  <h2>Lecture Design &amp; Content Scaffolding</h2>
-  <p>
-    <strong>SOC 3251W: Sociological Perspectives on Race, Class, and Gender</strong><br>
-    University of Minnesota · Fall 2018, Fall 2024 · Writing-Intensive
-  </p>
-  <div class="tags">
-    <span class="tag">Hybrid</span>
-    <span class="tag">Scaffolded Content</span>
-    <span class="tag">Media Integration</span>
-    <span class="tag">Discussion-Based</span>
-  </div>
-
-  <h3>Design Approach</h3>
-  <p>
-    This case study focuses on a single week's lecture to illustrate how I structure content delivery within a learning unit. The example — Week 5, "Discrimination and New Racism" — demonstrates how historical context, theoretical frameworks, primary source evidence, and contemporary application can be sequenced to build toward critical analysis.
-  </p>
-
-  <h3>Pedagogical Arc</h3>
-  <p>
-    The lecture moves through five distinct phases, each building on the last. The progression is designed so that students encounter new theoretical concepts only after the historical groundwork makes them intelligible, and encounter discussion questions only after they've seen the theory applied to real data.
-  </p>
-
-  <!-- SLIDE ANNOTATIONS -->
-
-  <div class="slide-annotation">
-    <div class="slide-img-container">
-      <!-- Replace with actual slide screenshot -->
-      <img src="assets/3251w/Slide7.PNG" alt="Lecture slide">
-    </div>
-    <div class="slide-commentary">
-      <h4>Phase 1: Historical Foundation</h4>
-      <p>The lecture opens with a compressed history of racial discrimination from Reconstruction through the Civil Rights Movement. This isn't background for its own sake — it establishes the baseline of explicit, codified racism that the subsequent theoretical framework (color-blind racism) defines itself against. Students need to understand what "old" racism looked like before they can grasp what's "new" about its contemporary form.</p>
-    </div>
-  </div>
-
-  <div class="slide-annotation">
-    <div class="slide-img-container">
-     <img src="assets/3251w/Slide16.PNG" alt="Lecture slide">
-    </div>
-    <div class="slide-commentary">
-      <h4>Phase 2: Theoretical Framework</h4>
-      <p>With the historical baseline established, the lecture introduces Eduardo Bonilla-Silva's theory of color-blind racism and its four frames: abstract liberalism, naturalization, cultural racism, and minimization. The concept of a "frame" is defined explicitly before the individual frames are presented — an example of front-loading vocabulary so students can process the typology without simultaneously decoding the terminology.</p>
-    </div>
-  </div>
-
-  <div class="slide-annotation">
-    <div class="slide-img-container">
-     <img src="assets/3251w/Slide18.PNG" alt="Lecture slide">
-    </div>
-    <div class="slide-commentary">
-      <h4>Phase 3: Primary Source Application</h4>
-      <p>Each frame is illustrated with direct quotations from Bonilla-Silva's interview data — real people articulating real positions that exemplify the theoretical concept. This serves two purposes: it makes the abstract framework concrete, and it develops students' capacity to identify discursive patterns in naturalistic speech. The shift from textbook definition to primary source analysis mirrors the kind of interpretive work the course paper requires.</p>
-    </div>
-  </div>
-
-  <div class="slide-annotation">
-    <div class="slide-img-container">
-     <img src="assets/3251w/Slide38.PNG" alt="Lecture slide">
-    </div>
-    <div class="slide-commentary">
-      <h4>Phase 4: Contemporary Application</h4>
-      <p>The lecture then pivots to contemporary examples, asking whether the "new racism" framework still holds or whether recent political developments represent a resurgence of explicit racial ideology. This section deliberately complicates the theoretical framework just presented — pushing students beyond passive reception toward evaluating the theory's limits and applicability.</p>
-    </div>
-  </div>
-
-  <div class="slide-annotation">
-    <div class="slide-img-container">
-      <img src="assets/3251w/Slide41.PNG" alt="Lecture slide">
-        </div>
-    <div class="slide-commentary">
-      <h4>Phase 5: Discussion Synthesis</h4>
-      <p>The closing discussion questions are designed to operate at different levels of analysis: some ask for application of the framework ("How applicable is color-blind racism in the current era?"), others ask for evaluation of competing claims ("Is racism better when it's out in the open?"), and others probe underlying assumptions ("Why is 'ignoring race' such an appealing message?"). This tiered approach ensures that students at different levels of readiness can engage productively.</p>
-    </div>
-  </div>
-
-  <div class="artifact-block">
-    <h4>Design Principle</h4>
-    <p>Each lecture follows the same structural logic: establish context, introduce the analytical tool, demonstrate application with evidence, complicate the tool with new cases, and then hand the analysis to students via discussion. This consistent architecture means students can focus on the content rather than figuring out how the lecture works each week.</p>
-  </div>
-</section>
-
-
-<!-- ============================================= -->
-<!-- PROJECT 3: MEDIA PRODUCTION -->
-<!-- ============================================= -->
-<section class="section" id="media-production">
-  <div class="section-divider"></div>
-  <div class="section-label">Project 3</div>
-  <h2>Educational Media Production</h2>
-  <p>
-    <strong>The Society Pages</strong> · University of Minnesota<br>
-    Senior Content Producer &amp; Section Editor · 2014–2018, 2024
-  </p>
-  <div class="tags">
-    <span class="tag">Podcast Production</span>
-    <span class="tag">Editorial Strategy</span>
-    <span class="tag">Video Production</span>
-    <span class="tag">Public Engagement</span>
-  </div>
-
-  <h3>Context</h3>
-  <p>
-    The Society Pages is a public sociology platform hosted by the University of Minnesota, designed to make social science research accessible to non-academic audiences. As Senior Content Producer, I managed the full production pipeline for the site's flagship podcast series and built out its video content division. This work required translating complex scholarly arguments into engaging, accessible media — a process that is fundamentally instructional design, even when it isn't called that.
-  </p>
-
-  <h3>Production Approach</h3>
-  <p>
-    Each podcast episode began with identifying the core argument of a scholar's work and determining what a general audience needed to understand it. I then designed the interview to scaffold that understanding: opening with accessible context, introducing key concepts through conversation rather than lecture, and using concrete examples to anchor abstract claims. Post-production involved editing for clarity and pacing — decisions about what to cut, where to add context, and how to structure the episode arc are editorial design choices with direct parallels to instructional sequencing.
-  </p>
-
-  <h3>Selected Work</h3>
-  <p>
-    The pieces below represent different aspects of the production process: long-form research interviews, topical editorial writing, and multimedia content strategy.
-  </p>
-
-  <!-- MEDIA ITEMS — replace placeholder URLs with actual links -->
-  <div class="media-item">
-    <span class="media-type">Podcast</span>
-    <div class="media-content">
-      <h4><a href="https://thesocietypages.org/officehours/2017/04/14/theda-skocpol-on-the-koch-network/" target="_blank">Theda Skocpol on the Koch Network</a></h4>
-      <p>Interview with Harvard political scientist Theda Skocpol on conservative political infrastructure. Designed to make organizational sociology accessible to a general audience by grounding abstract network theory in concrete political examples.</p>
-    </div>
-  </div>
-  <div class="media-item">
-    <span class="media-type">Podcast</span>
-    <div class="media-content">
-      <h4><a href="https://thesocietypages.org/officehours/2016/10/10/jooyoung-lee-on-blowin-up-rap-dreams-in-south-central/" target="_blank">Jooyoung Lee on <em>Blowin' Up</em></a></h4>
-      <p>Conversation with sociologist Jooyoung Lee about aspiring rappers in South Central Los Angeles. This episode won Best Podcast of the Year from The Society Pages and demonstrates how ethnographic research can be communicated through narrative-driven interview design.</p>
-    </div>
-  </div>
-  <div class="media-item">
-    <span class="media-type">Podcast</span>
-    <div class="media-content">
-      <h4><a href="https://thesocietypages.org/officehours/2017/02/06/natasha-warikoo-on-the-diversity-bargain/" target="_blank">Natasha Warikoo on <em>The Diversity Bargain</em></a></h4>
-      <p>Interview on how elite university students understand race and meritocracy. Connects directly to my research on diversity discourse and demonstrates how to structure a conversation around a book's central thesis for listeners unfamiliar with the academic context.</p>
-    </div>
-  </div>
-  <div class="media-item">
-    <span class="media-type">Podcast</span>
-    <div class="media-content">
-      <h4><a href="https://thesocietypages.org/officehours/2016/11/21/douglas-hartmann-on-midnight-basketball/" target="_blank">Douglas Hartmann on <em>Midnight Basketball</em></a></h4>
-      <p>Discussion of race, sport, and social policy with sociologist Douglas Hartmann. Illustrates how to make policy research engaging by anchoring it in a specific, vivid case study rather than leading with abstract findings.</p>
-    </div>
-  </div>
-
-  <div class="artifact-block">
-    <h4>Transferable Skills</h4>
-    <p>Managing the podcast and editorial operation at The Society Pages involved guest coordination, interview design, audio recording and editing (Audacity, Adobe Premiere), production scheduling, contributor management, and editorial quality control across multiple content types. These are the same project management and content production skills that instructional designers use when coordinating course development with faculty authors and multimedia specialists.</p>
-  </div>
-</section>
-
-
-
-
-
-
 <div class="projects-grid" id="projects">
   <div class="section-divider"></div>
   <div class="section-label">Case Studies</div>
   <h2>Selected Projects</h2>
- 
+
   <div class="project-cards">
- 
+
     <a href="course-design.html" class="project-card">
       <span class="card-label">Project 1</span>
       <h3>Asynchronous Course Design</h3>
@@ -865,11 +115,33 @@
       </div>
       <span class="card-cta">View case study →</span>
     </a>
- 
 
+    <a href="content-scaffolding.html" class="project-card">
+      <span class="card-label">Project 2</span>
+      <h3>Lecture Design &amp; Content Scaffolding</h3>
+      <p class="card-desc">A detailed walkthrough of a single lecture's pedagogical arc — from historical foundation through theoretical framework to student-led discussion synthesis.</p>
+      <div class="card-tags">
+        <span class="tag">Hybrid</span>
+        <span class="tag">Scaffolded Content</span>
+        <span class="tag">Media Integration</span>
+      </div>
+      <span class="card-cta">View case study →</span>
+    </a>
 
+    <a href="media-production.html" class="project-card">
+      <span class="card-label">Project 3</span>
+      <h3>Educational Media Production</h3>
+      <p class="card-desc">Full-cycle podcast and editorial production for a public sociology platform — translating complex scholarship into accessible, engaging media for non-academic audiences.</p>
+      <div class="card-tags">
+        <span class="tag">Podcast Production</span>
+        <span class="tag">Editorial Strategy</span>
+        <span class="tag">Video</span>
+      </div>
+      <span class="card-cta">View case study →</span>
+    </a>
 
-
+  </div>
+</div>
 
 
 <!-- ============================================= -->
@@ -890,19 +162,4 @@
 </footer>
 
 </body>
-
-
-
-
-
-
-
-
-
 </html>
-
-
-
-
-
-
